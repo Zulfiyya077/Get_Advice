@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Advice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="box1">
+
+        <div class="box2">
+            <span> Advice # <span class="idnum"></span></span>
+            <div class="advice"> </div>
+
+            <div class="lines">
+                <div class="line"></div>
+                <div class="vertical"></div>
+                <div class="vertical"></div>
+                <div class="line"></div>
+            </div>
+            <button class="btn" onclick="getAdvice()">New Advice</button>
+
+            <button class="heart">
+                <i onclick="myFunction(this)" class="fa fa-heart"></i>
+
+            </button>
+
+            <button class="sound"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+                    clip-rule="evenodd">
+                    <path d="M15 23l-9.309-6h-5.691v-10h5.691l9.309-6v22
+					  zm-9-15.009v8.018l8 5.157v-18.332l-8 5.157zm14.228-4.219c2.327 1.989 3.77
+					  2 4.942 3.772 8.229 0 3.288-1.445 6.241-3.77 8.229l-.708-.708c2.136-1.791
+					   3.478-4.501 3.478-7.522s-1.342-5.731-3.478-7.522l.706-.706zm-2.929 
+					   2.929c1.521 1.257 2.476 3.167 2.476 5.299 0 2.132-.955 4.042-2.476
+					    5.299l-.706-.706c1.331-1.063 2.182-2.729 2.182-4.591 0-1.863-.
+						851-3.529-2.184-4.593l.708-.708zm-12.299 1.299h-4v8h4v-8z" />
+                </svg></button>
+
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
