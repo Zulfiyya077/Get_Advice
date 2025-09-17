@@ -20,15 +20,13 @@ sound.addEventListener('click', () => {
     let text = advice.innerHTML.trim();
     if (text) {
         let utterance = new SpeechSynthesisUtterance(text);
-        // Dil təyin et (məsələn, Azərbaycan üçün yaxın olan türk dili)
-        utterance.lang = "tr-TR";
-        // İngilis mətnlər üçün:
-        // utterance.lang = "en-US";
+       
+        utterance.lang = "en-US";
         // Mobil Chrome üçün workaround
         if (speechSynthesis.speaking) {
             speechSynthesis.cancel();
         }
-        speechSynthesis.resume(); // bəzi mobil cihazlarda lazımdır
+        speechSynthesis.resume(); 
         speechSynthesis.speak(utterance);
     }
 });
