@@ -46,22 +46,19 @@ document.addEventListener('keydown', function(event) {
     // Enter düyməsi - Yeni məsləhət
     if (event.key === 'Enter') {
         event.preventDefault();
-        btn.click(); 
-        getAdvice(); 
+        getAdvice(); // Yalnız yeni advice 
     }
     
     // Space düyməsi - Səs oynat
     else if (event.key === ' ' || event.code === 'Space') {
-        event.preventDefault(); // Səhifə scroll etməsini dayandıraq
-        sound.click(); 
-        speakAdvice(); 
+        event.preventDefault(); // Səhifə scroll etməsini dayandır
+        speakAdvice(); // Yalnız səsi oynat
     }
     
     // Plus düyməsi (+) - Sevimli
     else if (event.key === '+' || event.key === '=') {
         event.preventDefault();
-        heart.click(); 
-        toggleHeart(); 
+        toggleHeart(); // Yalnız heart toggle 
     }
 });
 
