@@ -3,7 +3,6 @@ let id = document.querySelector('.idnum');
 let btn = document.querySelector('.btn');
 let sound = document.querySelector('.sound');
 let heart = document.querySelector('.heart');
-
 const url = 'https://api.adviceslip.com/advice';
 
 let getAdvice = () => {
@@ -11,34 +10,72 @@ let getAdvice = () => {
         advice.innerHTML = item.slip.advice;
         id.innerHTML = item.slip.id;
     }).catch((error) => {
-        console.log( error);
-
+        console.log(error);
     });
 };
 
-sound.addEventListener('click', () => {
+// Səs funksiyası
+function speakAdvice() {
     let text = advice.innerHTML.trim();
     if (text) {
         let utterance = new SpeechSynthesisUtterance(text);
-       
         utterance.lang = "en-US";
-        // Mobil Chrome üçün workaround
+        
         if (speechSynthesis.speaking) {
             speechSynthesis.cancel();
         }
         speechSynthesis.resume(); 
         speechSynthesis.speak(utterance);
     }
+}
+
+// Sevimli funksiyası
+function toggleHeart() {
+    const heartIcon = heart.querySelector('i');
+    const isFilled = heartIcon.classList.contains("fa-heart");
+    
+    if (isFilled) {
+        heartIcon.classList.replace("fa-heart", "fa-heart-o");
+    } else {
+        heartIcon.classList.replace("fa-heart-o", "fa-heart");
+    }
+}
+
+// Klaviatura hadisələri
+document.addEventListener('keydown', function(event) {
+    // Enter düyməsi - Yeni məsləhət
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        btn.click(); 
+        getAdvice(); 
+    }
+    
+    // Space düyməsi - Səs oynat
+    else if (event.key === ' ' || event.code === 'Space') {
+        event.preventDefault(); // Səhifə scroll etməsini dayandıraq
+        sound.click(); 
+        speakAdvice(); 
+    }
+    
+    // Plus düyməsi (+) - Sevimli
+    else if (event.key === '+' || event.key === '=') {
+        event.preventDefault();
+        heart.click(); 
+        toggleHeart(); 
+    }
 });
+
+// Orijinal event listener-lər
+sound.addEventListener('click', speakAdvice);
+
+heart.addEventListener('click', toggleHeart);
 
 function myFunction(x) {
     const isFilled = x.classList.contains("fa-heart");
     
     if (isFilled) {
-       
         x.classList.replace("fa-heart", "fa-heart-o");
     } else {
-      
         x.classList.replace("fa-heart-o", "fa-heart");
     }
 }
@@ -51,6 +88,7 @@ btn.addEventListener('click', () => {
     getAdvice();
 });
 
+// Geriyə uyğunluq üçün əvvəlki heart funksiyası
 heart.addEventListener('click', () => {
-    myFunction(heart);
+    myFunction(heart.querySelector('i'));
 });
